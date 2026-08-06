@@ -1,29 +1,94 @@
 {
-  "name": "Calculator Pro Max",
-  "short_name": "Calc Pro",
-  "description": "The best calculator, fast, beautiful and powerful for daily use",
-  "start_url": "./",
+  "id": "/",
+  "name": "Calculadora Samsung - One UI Style",
+  "short_name": "Calculadora",
+  "description": "Calculadora gratuita inspirada en el diseño de Samsung One UI. Realiza operaciones basicas como suma, resta, multiplicacion y division, con un historial de operaciones, temas personalizables y una interfaz moderna, rapida y ligera. Ideal para estudiantes y uso diario sin anuncios molestos y 100 por ciento funcional sin conexion.",
+  "start_url": "./?source=pwa",
+  "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "orientation": "portrait-primary",
   "background_color": "#000000",
   "theme_color": "#000000",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "categories": ["utilities", "productivity", "calculator"],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-f5e41452e882",
+  "prefer_related_applications": false,
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
   "icons": [
     {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "icon-512.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/8913/8913000.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/8913/8913000.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/8913/8913000.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/8913/8913000.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/8913/8913000.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Calculadora estilo Samsung"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/8913/8913000.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Vista amplia de la calculadora"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Abrir Calculadora",
+      "short_name": "Abrir",
+      "description": "Abre la calculadora rapidamente",
+      "url": "./?shortcut=open",
+      "icons": [
+        {
+          "src": "https://cdn-icons-png.flaticon.com/512/8913/8913000.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "protocol_handlers": [],
+  "file_handlers": [],
+  "share_target": {
+    "action": "./?share-target",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }
