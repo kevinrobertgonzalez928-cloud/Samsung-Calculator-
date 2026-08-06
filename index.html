@@ -140,9 +140,13 @@
     <button class="key func" data-key="del">C</button>
     <button class="key equals" data-key="equals">=</button>
   </div>
-
 </div>
 
 <script src="script.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./pwabuilder-sw.js');
+}
+  </script>
 </body>
 </html>
