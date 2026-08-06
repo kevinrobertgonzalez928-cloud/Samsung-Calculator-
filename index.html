@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Samsung Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ===== BARRA SUPERIOR ===== -->
+  <header class="topbar">
+    <button class="icon-btn" id="btnMenu" aria-label="Historial">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <h1 class="app-title">Samsung Calculator</h1>
+    <button class="icon-btn" id="btnSci" aria-label="Modo científico">
+      <span class="fx">fx</span>
+    </button>
+  </header>
+
+  <!-- ===== PANEL LATERAL: HISTORIAL / CINTA ===== -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <div class="tabs">
+        <button class="tab active" data-tab="historial">Historial</button>
+        <button class="tab" data-tab="cinta">Cinta de papel</button>
+      </div>
+      <button class="icon-btn small" id="btnCloseSidebar">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="sidebar-body">
+      <div class="panel active" id="panelHistorial">
+        <div class="empty-msg" id="historialEmpty">Aún no hay operaciones</div>
+        <ul class="history-list" id="historyList"></ul>
+      </div>
+      <div class="panel" id="panelCinta">
+        <div class="empty-msg" id="cintaEmpty">La cinta de papel está vacía</div>
+        <div class="tape" id="tapeList"></div>
+      </div>
+    </div>
+
+    <div class="sidebar-actions">
+      <button class="ghost-btn" id="btnCopy">Copiar</button>
+      <button class="ghost-btn" id="btnExport">Exportar .txt</button>
+      <button class="ghost-btn danger" id="btnClearHistory">Borrar todo</button>
+    </div>
+  </aside>
+
+  <!-- ===== PANEL CONVERSOR ===== -->
+  <div class="overlay" id="overlayConv"></div>
+  <div class="conv-panel" id="convPanel">
+    <div class="conv-head">
+      <span>Conversor de resultado</span>
+      <button class="icon-btn small" id="btnCloseConv">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="conv-body" id="convBody"></div>
+  </div>
+
+  <!-- ===== MODAL DE CONFIRMACION PROPIO DE LA APP ===== -->
+  <div class="overlay" id="overlayModal"></div>
+  <div class="confirm-modal" id="confirmModal">
+    <div class="confirm-title" id="confirmTitle">Confirmar</div>
+    <div class="confirm-message" id="confirmMessage"></div>
+    <div class="confirm-actions">
+      <button class="confirm-btn cancel" id="confirmCancelBtn">Cancelar</button>
+      <button class="confirm-btn accept" id="confirmAcceptBtn">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- ===== PANTALLA ===== -->
+  <main class="screen">
+    <div class="memory-indicator" id="memIndicator">M</div>
+
+    <div class="smart-text" id="smartText">&nbsp;</div>
+    <div class="operation-line" id="operationLine">&nbsp;</div>
+    <div class="result-line" id="resultLine">0</div>
+
+    <div class="convert-row">
+      <button class="chip" data-conv="bin">BIN</button>
+      <button class="chip" data-conv="words">Letras</button>
+      <button class="chip" data-conv="currency">USD/MXN</button>
+    </div>
+  </main>
+
+  <!-- ===== FILA CIENTIFICA (colapsable) ===== -->
+  <div class="sci-row" id="sciRow">
+    <button class="key sci" data-sci="sin">sin</button>
+    <button class="key sci" data-sci="cos">cos</button>
+    <button class="key sci" data-sci="tan">tan</button>
+    <button class="key sci" data-sci="sqrt">√</button>
+    <button class="key sci" data-sci="pow">xʸ</button>
+    <button class="key sci" data-sci="log">log</button>
+  </div>
+
+  <!-- ===== FILA MEMORIA ===== -->
+  <div class="mem-row">
+    <button class="key mem" data-mem="mc">MC</button>
+    <button class="key mem" data-mem="mr">MR</button>
+    <button class="key mem" data-mem="mplus">M+</button>
+    <button class="key mem" data-mem="mminus">M−</button>
+  </div>
+
+  <!-- ===== TECLADO PRINCIPAL ===== -->
+  <div class="keypad">
+    <button class="key func" data-key="ac">AC</button>
+    <button class="key func" data-key="paren-l">(</button>
+    <button class="key func" data-key="paren-r">)</button>
+    <button class="key op" data-key="percent">%</button>
+
+    <button class="key num" data-key="7">7</button>
+    <button class="key num" data-key="8">8</button>
+    <button class="key num" data-key="9">9</button>
+    <button class="key op" data-key="divide">÷</button>
+
+    <button class="key num" data-key="4">4</button>
+    <button class="key num" data-key="5">5</button>
+    <button class="key num" data-key="6">6</button>
+    <button class="key op" data-key="multiply">×</button>
+
+    <button class="key num" data-key="1">1</button>
+    <button class="key num" data-key="2">2</button>
+    <button class="key num" data-key="3">3</button>
+    <button class="key op" data-key="subtract">−</button>
+
+    <button class="key func" data-key="sign">+/−</button>
+    <button class="key num" data-key="0">0</button>
+    <button class="key num" data-key="dot">.</button>
+    <button class="key op" data-key="add">+</button>
+
+    <button class="key func" data-key="del">C</button>
+    <button class="key equals" data-key="equals">=</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
