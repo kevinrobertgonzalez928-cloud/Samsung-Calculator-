@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="./manifest.json">
 <title>Samsung Calculator</title>
 <link rel="stylesheet" href="style.css">
 </head>
-  <link rel="manifest" href="manifest.json">
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}</script>
 <body>
 
 <div class="app">
@@ -140,13 +140,14 @@
     <button class="key func" data-key="del">C</button>
     <button class="key equals" data-key="equals">=</button>
   </div>
+
 </div>
 
 <script src="script.js"></script>
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./pwabuilder-sw.js');
-}
-  </script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./pwabuilder-sw.js');
+  }
+</script>
 </body>
-</html>
+    </html>
